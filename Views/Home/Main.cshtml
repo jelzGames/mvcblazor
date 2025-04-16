@@ -1,0 +1,10 @@
+﻿@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    var currentUser = HttpContextAccessor.HttpContext?.Session.GetString("Username") ?? "";
+    var guest = string.IsNullOrEmpty(ViewBag.guest) ? currentUser : ViewBag.guest;
+    var idRoom = string.IsNullOrEmpty(ViewBag.idRoom) ? "" : ViewBag.idRoom;
+}
+
+@(await Html.RenderComponentAsync
+    <ChatPanel>(RenderMode.ServerPrerendered, new { me = currentUser, guest = guest, idRoom = idRoom }))

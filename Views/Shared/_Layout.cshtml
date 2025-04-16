@@ -1,0 +1,153 @@
+﻿@using MixedTeam.Models
+@using MixedTeam.Services
+@inject IHttpContextAccessor HttpContextAccessor
+@inject IUserStoreServices UserStoreServices
+
+@{
+    var currentUser = HttpContextAccessor.HttpContext?.Session.GetString("Username") ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="~/" />
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - MixedTeam</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BlazorInMvc.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/ChatPanel.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+   
+  
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        .wrapper {
+            display: flex;
+            height: 100vh; /* ocupa toda la altura de la ventana */
+        }
+
+        .left-panel {
+            width: 250px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        .main-content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+
+        .left-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* ¡clave! */
+            height: 100vh;
+            width: 250px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+        }
+
+        .logout-section {
+            text-align: left;
+            font-size: 14px;
+        }
+
+            .logout-section hr {
+                border: none;
+                border-top: 1px solid #ccc;
+                margin-bottom: 10px;
+            }
+
+        .user-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .user-icon-container {
+            position: relative;
+            display: inline-block;
+            font-size: 24px;
+            width: 32px;
+            height: 32px;
+        }
+
+        .user-icon {
+            display: inline-block;
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 10px;
+            height: 10px;
+            background-color: #28a745; 
+            border: 2px solid #f2f2f2; 
+            border-radius: 50%;
+        }
+
+    </style>
+</head>
+<body class="@ViewBag.BodyClass">
+    <div class="wrapper">
+        @if (ViewBag.BodyClass != "index-page")
+        {
+            <div class="left-panel">
+                <div>
+                    <div class="user-header">
+                        <div class="user-icon-container">
+                            <span class="user-icon">👤</span>
+                            <span class="status-indicator"></span>
+                        </div>
+                        <span class="user-name">@currentUser</span>
+                    </div>
+
+                    <h5>Connected users:</h5>
+                    @(await Html.RenderComponentAsync
+                        <UserList>(RenderMode.ServerPrerendered, new { CurrentUser = currentUser }))
+                </div>
+
+                <div class="logout-section">
+                    <hr />
+                    <a asp-action="Logout" asp-controller="Account" title="Logout">
+                        🚪 Logout
+                    </a>
+                </div>
+            </div>
+        }
+
+        <div class="main-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/ChatPanel.js" asp-append-version="true"></script>
+    <script src="_framework/blazor.server.js"></script>
+   
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+

@@ -1,0 +1,44 @@
+﻿
+
+<ul class="user-list">
+    @foreach (var user in Services.ConnectedUsers)
+    {
+        if (user != CurrentUser)
+        {
+            <li class="user-item @(Services.SelectedUser == user ? "selected" : "")" @onclick="@(() => SelectRoom(user))">
+                <span class="user-icon-list">👤</span> @user
+            </li>
+        }
+    }
+</ul>
+
+<style>
+    .user-list {
+        list-style-type: none;
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .user-item {
+        padding: 6px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in-out;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+        .user-item:hover {
+            background-color: #eaeaea;
+        }
+
+        .user-item.selected {
+            background-color: #cce5ff;
+            font-weight: bold;
+        }
+
+    .user-icon-list {
+        font-size: 1.2rem;
+    }
+</style>

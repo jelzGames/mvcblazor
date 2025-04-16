@@ -1,0 +1,72 @@
+﻿<div class="chat-container">
+
+    <div class="chat-header" >
+        <span class="user-icon">👤</span>
+        <span class="user-name" >@guest</span>
+    </div>
+
+    <hr class="chat-separator" />
+
+    <div class="chat-messages" id="chatMessages">
+        @foreach (var message in RoomStoreServices.RoomMessages[idRoom])
+        {
+            <div class="chat-bubble @(message.Sender == me ? "mine" : "theirs")">
+                <div class="chat-timestamp">
+                    @if (message.Sender != me)
+                    {
+                        <span class="sender-name">@message.Sender:</span>
+                    }
+                    <span class="timestamp">@message.Timestamp.ToString("dd.MM.yyyy HH:mm")</span>
+                </div>
+                <div class="chat-message">@message.Text</div>
+            </div>
+        }
+    </div>
+
+    <div class="chat-input">
+        <input @bind="newMessage" placeholder="Type your message..." @onkeyup="HandleEnter" />
+        <button type="button" @onclick="SendMessage" title="Send">📨</button>
+    </div>
+</div>
+<style>
+    .chat-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid #ccc;
+    }
+
+    .chat-separator {
+        margin: 0 10px 0px;
+        border: none;
+        border-top: 1px solid #ddd;
+    }
+
+    .chat-timestamp {
+        display: flex;
+        gap: 6px;
+        font-size: 12px;
+        color: #888;
+        align-items: center;
+    }
+
+    .sender-name {
+        font-weight: bold;
+        color: #000;
+    }
+
+</style>
+
+
+
+

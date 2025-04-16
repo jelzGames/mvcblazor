@@ -1,0 +1,73 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Sign In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .centered-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .form-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 300px;
+        }
+
+            .form-box h3 {
+                margin-top: 0;
+                text-align: center;
+            }
+
+            .form-box input,
+            .form-box button {
+                width: 100%;
+                box-sizing: border-box;
+                margin-top: 10px;
+                padding: 10px;
+                font-size: 1em;
+            }
+
+        .validation-message {
+            color: red;
+            font-size: 0.85em;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-box">
+        <form asp-action="Login" method="post" class="form-box">
+            <h3>Sign In</h3>
+
+            <input asp-for="Username" placeholder="Username" />
+            <span asp-validation-for="Username" class="validation-message"></span>
+
+            <button type="submit">Connect</button>
+        </form>
+    </div>
+
+    @section Scripts {
+        <partial name="_ValidationScriptsPartial" />
+    }
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿.drop-down-images {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1024px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.main-header {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #4cc9f0;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transition: transform 0.5s ease-out;
+}
+
+.image-grid {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.image-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.img-container {
+    width: 6rem;
+    height: 6rem;
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: transform 0.7s ease-out, opacity 0.7s ease-out;
+}
+
+.tech-image {
+    width: 5rem;
+    height: 5rem;
+    object-fit: contain;
+}
+
+.caption {
+    margin-top: 0.5rem;
+    color: #d1d5db;
+    text-align: center;
+    font-weight: 500;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.button-container {
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    margin-top: 2rem;
+}
+
+.portfolio-button {
+    padding: 0.75rem 1.5rem;
+    background-color: #4cc9f0;
+    color: #1a202c;
+    border-radius: 0.375rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+    .portfolio-button:hover {
+        background-color: #3bb0e0;
+    }
+
+.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
