@@ -22,6 +22,7 @@ Technically, the application is built using C# and .NET Core 9. Session-based au
 This hybrid architecture allows for a smooth transition toward more modern technologies like Blazor, without losing the familiarity and reliability of ASP.NET MVC.
 
 💡 Technologies Used:
+
 ASP.NET Core MVC
 
 Blazor Server (RenderMode.ServerPrerendered)
@@ -32,7 +33,7 @@ C#
 
 Razor (.cshtml)
 
-Bootstrap / Tailwind (optional for UI)
+Bootstrap 
 
 Session-based user authentication
 
