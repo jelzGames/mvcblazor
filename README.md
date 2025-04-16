@@ -1,6 +1,7 @@
-## CChat
+## Tiiny Chat
 ## Description:
 🌐 Project: Hybrid Chat Application with ASP.NET MVC and Blazor Server
+
 📘 Description:
 A hybrid chat application built with ASP.NET MVC and Blazor Server, designed to showcase how modern UI technologies can be integrated into a traditional web architecture.
 
