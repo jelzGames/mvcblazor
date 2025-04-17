@@ -1,4 +1,7 @@
 ## Tiiny Chat
+
+[![Watch the demo](https://img.youtube.com/vi/uwmmSjTaWt0/0.jpg)](https://www.youtube.com/watch?v=uwmmSjTaWt0)
+
 ## Description:
 
 🌐 Project: Hybrid Chat Application with ASP.NET MVC and Blazor Server
